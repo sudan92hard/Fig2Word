@@ -29,21 +29,30 @@ public class AmountToWords {
 
 	public static void main(String args[])
 	{
-		String amount = "4000040.78";
+		String amount = "4000040.78.99";
 		AmountToWords amt = new AmountToWords();
 		String inWords = "";
 		if(amount.contains("."))
 		{
 			String[] amounts = amount.split("\\.");
-			if(amounts[0].equals("0") || amounts[0].equals(""))
+			
+			if(amounts.length > 2 )
 			{
-				inWords += getPaiseValue(amounts[1]) + "paise only";
+				System.out.println("Incorrect Input");
 			}
 			else
+
 			{
-				inWords = getRupeeValue(amounts[0]) + "rupees and ";
-				inWords += getPaiseValue(amounts[1]) + "paise only";		
-			}
+				if(amounts[0].equals("0") || amounts[0].equals(""))
+				{
+					inWords += getPaiseValue(amounts[1]) + "paise only";
+				}
+				else
+				{
+					inWords = getRupeeValue(amounts[0]) + "rupees and ";
+					inWords += getPaiseValue(amounts[1]) + "paise only";		
+				}				
+			}			
 		}
 		else
 		{
